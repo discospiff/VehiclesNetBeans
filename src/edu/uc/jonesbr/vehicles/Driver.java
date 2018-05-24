@@ -5,6 +5,8 @@
  */
 package edu.uc.jonesbr.vehicles;
 
+import javax.swing.JOptionPane;
+
 /**
  * This represents a driver of a vehicle.
  * @author ucint
@@ -23,9 +25,11 @@ public class Driver {
      * Prompt the user for information about trips and MPG
      */
     public static void promptUser() {
-        int mpg = 25;
+        String milesPerGallon = JOptionPane.showInputDialog("How many miles per gallon does the vehicle get?");
+        int mpg = Integer.parseInt(milesPerGallon);
         double gallonsOfGas = 10;
-        int distance = 500;
+        String journey = JOptionPane.showInputDialog("How far do you want to go?");
+        int distance = Integer.parseInt(journey);
         
         double gallonsConsumed = distance / mpg;
         gallonsOfGas = gallonsOfGas - gallonsConsumed;
