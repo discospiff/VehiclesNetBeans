@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
  * @author ucint
  */
 public class Driver {
+    
+    public final static String PLANT_PLACES_DOMAIN_NAME = "http://www.plantplaces.com";
 
     /**
      * @param args the command line arguments
@@ -25,7 +27,9 @@ public class Driver {
      * Prompt the user for information about trips and MPG
      */
     public static void promptUser() {
-        String milesPerGallon = JOptionPane.showInputDialog("How many miles per gallon does the vehicle get?");
+        String mpgPrompt;
+        mpgPrompt = "How many miles per gallon does the vehicle get?";
+        String milesPerGallon = JOptionPane.showInputDialog(mpgPrompt);
         int mpg = Integer.parseInt(milesPerGallon);
         double gallonsOfGas = 10;
         String journey = JOptionPane.showInputDialog("How far do you want to go?");
