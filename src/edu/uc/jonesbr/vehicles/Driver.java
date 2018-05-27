@@ -33,7 +33,7 @@ public class Driver {
         
         double gallonsConsumed = distance / mpg;
         gallonsOfGas = gallonsOfGas - gallonsConsumed;
-        if (gallonsOfGas >= 0) {
+        if (gallonsOfGas >= 0) { 
             System.out.println("Gas Consumed: " + gallonsConsumed + " Gallons remaining: " + gallonsOfGas);
         } else {
             System.out.println("You ran out of gas!  You should start walking to a gas station.");
