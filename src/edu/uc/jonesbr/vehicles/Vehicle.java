@@ -12,8 +12,17 @@ package edu.uc.jonesbr.vehicles;
 public class Vehicle {
     private double gallonsOfGas;
     private int milesPerGallon;
+    private int odometer;
 
-    
+    public void go(int distance) {
+        // compute gallons consumed
+        double gallonsConsumed = distance/milesPerGallon;
+        // subtract gallons consumed from gallons of gas
+        gallonsOfGas = gallonsOfGas - gallonsConsumed;
+        
+        // increase the odometer
+        setOdometer(getOdometer() + distance);
+    } 
     
     /**
      * @return the gallonsOfGas
@@ -42,6 +51,22 @@ public class Vehicle {
     public void setMilesPerGallon(int milesPerGallon) {
         this.milesPerGallon = milesPerGallon;
     }
+
+    /**
+     * @return the odometer
+     */
+    public int getOdometer() {
+        return odometer;
+    }
+
+    /**
+     * @param odometer the odometer to set
+     */
+    public void setOdometer(int odometer) {
+        this.odometer = odometer;
+    }
     
-    
+    public String toString() {
+        return "Gallons of Gas: " + gallonsOfGas + " Odometer: " + getOdometer();
+    }    
 }
