@@ -13,6 +13,8 @@ public class Vehicle {
     private double gallonsOfGas;
     private int milesPerGallon;
 
+    
+    
     /**
      * @return the gallonsOfGas
      */
