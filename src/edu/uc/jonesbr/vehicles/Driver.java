@@ -27,6 +27,16 @@ public class Driver {
      * Prompt the user for information about trips and MPG
      */
     public static void promptUser() {
+        String[] passengers = new String[6];
+        passengers[0] = "Bob";
+        passengers[1] = "Sharon";
+        passengers[2] = "Sri";
+        
+        String[] myPassengers = {"Beth", "Bugsy", "Caz"};
+                
+        // send a welcome message with this JOptionPane.showMessageDialog
+        JOptionPane.showMessageDialog(null, "Welcome " + myPassengers[2]);
+        
         String mpgPrompt;
         mpgPrompt = "How many miles per gallon does the vehicle get?";
         String milesPerGallon = JOptionPane.showInputDialog(mpgPrompt);
