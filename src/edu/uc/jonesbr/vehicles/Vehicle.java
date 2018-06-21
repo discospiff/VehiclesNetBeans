@@ -21,7 +21,7 @@ public class Vehicle {
         gallonsOfGas = gallonsOfGas - gallonsConsumed;
         
         // increase the odometer
-        setOdometer(getOdometer() + distance);
+        odometer += distance;
     } 
     
     /**

@@ -28,10 +28,20 @@ public class Driver {
         
         // create a variable of type Vehicle.
         Vehicle myVehicle = new Vehicle();
-
+        // create an object of type Vehicle.  This object is different from myVehicle, and will have its own independent values.
+        Vehicle yourVehicle = new Vehicle();
+        
+        // initialize the values of yourVehicle
+        yourVehicle.setGallonsOfGas(8);
+        yourVehicle.setMilesPerGallon(20);
+        yourVehicle.setOdometer(30000);
         // print the current state of the vehicle
+        System.out.println("My Vehicle:");
         System.out.println(myVehicle.toString());
         
+        System.out.println("Your Vehicle:");
+        System.out.println(yourVehicle.toString());
+
         // prompt user
         String strGallonsOfGas = JOptionPane.showInputDialog("Enter gallons of gas");
         
@@ -54,13 +64,15 @@ public class Driver {
         final int intDistance = Integer.parseInt(strDistanceTravelled);
 
         // print the current state of the vehicle
+        System.out.println("My Vehicle");
         System.out.println(myVehicle.toString());
         
         // move the vehicle.
         myVehicle.go(intDistance);
         
         // print the current state of the vehicle
-        System.out.println(myVehicle.toString());
+        System.out.println("Your Vehicle:");
+        System.out.println(yourVehicle.toString());
         
     }
     
