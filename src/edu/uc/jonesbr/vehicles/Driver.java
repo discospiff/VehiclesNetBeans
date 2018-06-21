@@ -28,7 +28,7 @@ public class Driver {
         
         // create a variable of type Vehicle.
         Vehicle myVehicle = new Vehicle();
-        
+
         // print the current state of the vehicle
         System.out.println(myVehicle.toString());
         
@@ -49,7 +49,7 @@ public class Driver {
         final int intOdometer = Integer.parseInt(strOdometer);
         
         myVehicle.setOdometer(intOdometer);
-
+        
         final String strDistanceTravelled = JOptionPane.showInputDialog("Enter distance to travel");
         final int intDistance = Integer.parseInt(strDistanceTravelled);
 
@@ -64,5 +64,5 @@ public class Driver {
         
     }
     
-    
+
 }
