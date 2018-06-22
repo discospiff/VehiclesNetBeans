@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
  */
 public class Driver {
 
+    static int[] trips = new int[100];
+    static int tripCounter = 0;
     /**
      * @param args the command line arguments
      */
@@ -62,23 +64,49 @@ public class Driver {
         // if the user chooses yes, prompt for another vehicle.  Otherwise, do not loop again.    
         } while (createAnother == JOptionPane.YES_OPTION);        
    
-        final String strDistanceTravelled = JOptionPane.showInputDialog("Enter distance to travel");
-        final int intDistance = Integer.parseInt(strDistanceTravelled);
-
-
-        // move the vehicle.
-        myVehicle.go(intDistance);
+        promptForTrips();
         
-        // iterate over all of the vehicles in our collection, and run them the given distance.        
         for (Vehicle thisVehicle : allVehicles) {
-            // print the current state of the vehicle.
-            System.out.println("Before: " + thisVehicle.toString());
-            // print the current state of the vehicle.
-            System.out.println("After: ");
-            System.out.println(thisVehicle.toString());
+            for (int i = 0; i < tripCounter; i++) {
+                // print the current state of the vehicle.
+                System.out.println("Before: " + thisVehicle.toString());
+
+                // move the vehicle
+                thisVehicle.go(trips[i]);
+
+                // print the current state of the vehicle.
+                System.out.println("After: ");
+                System.out.println(thisVehicle.toString());
+            }
         }
     }
     
+    /**
+     * 
+     * @throws NumberFormatException
+     * @throws HeadlessException 
+     */
+    private static void promptForTrips() throws NumberFormatException, HeadlessException {
+
+        int createAnother;
+
+        do {
+            // prompt the user for a trip distance.
+            final String strDistanceTravelled = JOptionPane.showInputDialog("Enter distance to travel");
+            final int intDistance = Integer.parseInt(strDistanceTravelled);
+
+            // store that trip distance into an array.
+            trips[tripCounter] = intDistance;
+
+            // add one to the trip counter to increase our total number of trips entered.
+            tripCounter++;
+
+            createAnother = JOptionPane.showConfirmDialog(null, "Do you want to create another trip?", "Create another trip?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+            // if the user chooses yes, prompt for another vehicle.  Otherwise, do not loop again.    
+        } while (createAnother == JOptionPane.YES_OPTION);
+
+    }
 
     /**
      * Prompt and return an integer; validate that it is within a given range.
