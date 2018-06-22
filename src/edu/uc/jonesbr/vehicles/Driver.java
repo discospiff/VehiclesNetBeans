@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class Driver {
 
-    static int[] trips = new int[100];
+    static int[][] trips = new int[100][2];
     static int tripCounter = 0;
     /**
      * @param args the command line arguments
@@ -71,12 +71,20 @@ public class Driver {
                 // print the current state of the vehicle.
                 System.out.println("Before: " + thisVehicle.toString());
 
+                if (thisVehicle.getGallonsOfGas() <= 0) {
+                    System.out.println("Out of gas!");
+                    break;
+                }
                 // move the vehicle
-                thisVehicle.go(trips[i]);
+                thisVehicle.go(trips[i][0]);
 
                 // print the current state of the vehicle.
                 System.out.println("After: ");
                 System.out.println(thisVehicle.toString());
+                
+               double reimbursementTotal = (trips[i][1] * trips[i][0])/100.0;
+               System.out.println("Reimbursement Total: " + reimbursementTotal + " At " + trips[i][1] + " cents per mile.");                
+
             }
         }
     }
@@ -96,7 +104,10 @@ public class Driver {
             final int intDistance = Integer.parseInt(strDistanceTravelled);
 
             // store that trip distance into an array.
-            trips[tripCounter] = intDistance;
+            trips[tripCounter][0] = intDistance;
+ 
+            String strReimbursementRate = JOptionPane.showInputDialog("Enter reimbursement rate, per mile.");
+            trips[tripCounter][1] = Integer.parseInt(strReimbursementRate);
 
             // add one to the trip counter to increase our total number of trips entered.
             tripCounter++;
