@@ -29,14 +29,17 @@ public class Driver {
      * Prompt the user for information about trips and MPG
      */
     public static void promptUser() {
-        // create an object of type Vehicle, and store it in the variable myVehicle
-        Vehicle myVehicle;
         int createAnother;
         
+        Vehicle.setLicensePlateFee(15.0); 
+      
         // this array list will contain all of the vehicles that we create.
         ArrayList<Vehicle> allVehicles = new ArrayList<>();
             
         do {
+           // create an object of type Vehicle, and store it in the variable myVehicle
+    
+            Vehicle myVehicle;
             myVehicle  = new Vehicle();
             // prompt user
             String strGallonsOfGas = JOptionPane.showInputDialog("Enter gallons of gas");
@@ -44,6 +47,7 @@ public class Driver {
             // convert the string return to a double
             double dblGallonsOfGas = Double.parseDouble(strGallonsOfGas);
 
+          
             // set the attributes in myVehicle object.
             myVehicle.setGallonsOfGas(dblGallonsOfGas);
 
@@ -65,6 +69,7 @@ public class Driver {
         } while (createAnother == JOptionPane.YES_OPTION);        
    
         promptForTrips();
+
         
         for (Vehicle thisVehicle : allVehicles) {
             for (int i = 0; i < tripCounter; i++) {
