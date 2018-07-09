@@ -117,18 +117,9 @@ public class Driver {
      * @throws Exception 
      */
     public static Vehicle createVehicle(final Object selectedCar) throws Exception {
-        
-        if (selectedCar.toString().equalsIgnoreCase(NEON)) {
-            return new Neon();
-        } else if (selectedCar.toString().equalsIgnoreCase(CAVALIER)) {
-            return new Cavalier();
-        } else if (selectedCar.toString().equalsIgnoreCase(PRIUS)) {
-            return new Prius();
-        } else {
-            // record that this case should not happen.
-            throw new Exception ("Unrecognized Car");
-        }
-        // return myVehicle;
+        String fullyQualifiedClassName = "edu.uc.jonesbr.vehicles." + selectedCar.toString();
+        Vehicle myVehicle =  (Vehicle) Class.forName(fullyQualifiedClassName).newInstance();
+        return myVehicle;
     }
     
     /**
