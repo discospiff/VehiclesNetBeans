@@ -17,6 +17,10 @@ public class Driver {
 
     static int[][] trips = new int[100][2];
     static int tripCounter = 0;
+    public static final String PRIUS = "Prius";
+    public static final String CAVALIER = "Cavalier";
+    public static final String NEON = "Neon";
+
     /**
      * @param args the command line arguments
      */
@@ -40,7 +44,12 @@ public class Driver {
            // create an object of type Vehicle, and store it in the variable myVehicle
     
             Vehicle myVehicle;
-            myVehicle  = new Vehicle();
+            String[] availableCars = {NEON, CAVALIER, PRIUS};
+
+            JOptionPane.showInputDialog(null, "Choose a Car to Create", "Choose a Car", JOptionPane.QUESTION_MESSAGE, null, availableCars, NEON);
+            
+            myVehicle = new Prius();
+
             // prompt user
             String strGallonsOfGas = JOptionPane.showInputDialog("Enter gallons of gas");
 
