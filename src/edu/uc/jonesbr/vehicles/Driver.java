@@ -7,6 +7,8 @@ package edu.uc.jonesbr.vehicles;
 
 import java.awt.HeadlessException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,14 +27,19 @@ public class Driver {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        promptUser();
+        try {
+            // call the prompt user method
+            promptUser();
+        } catch (Exception ex) {
+            Logger.getLogger(Driver.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "Unknown car selected.  Program terminating.");
+        }
     }
     
     /**
      * Prompt the user for information about trips and MPG
      */
-    public static void promptUser() {
+    public static void promptUser() throws Exception {
         int createAnother;
         
         Vehicle.setLicensePlateFee(15.0); 
@@ -46,9 +53,9 @@ public class Driver {
             Vehicle myVehicle;
             String[] availableCars = {NEON, CAVALIER, PRIUS};
 
-            JOptionPane.showInputDialog(null, "Choose a Car to Create", "Choose a Car", JOptionPane.QUESTION_MESSAGE, null, availableCars, NEON);
-            
-            myVehicle = new Prius();
+            final Object selectedCar = JOptionPane.showInputDialog(null, "Choose a Car to Create", "Choose a Car", JOptionPane.QUESTION_MESSAGE, null, availableCars, NEON);
+             
+            myVehicle = createVehicle(selectedCar);
 
             // prompt user
             String strGallonsOfGas = JOptionPane.showInputDialog("Enter gallons of gas");
@@ -101,6 +108,27 @@ public class Driver {
 
             }
         }
+    }
+    
+    /**
+     * Simple factory method to create and return a subclass of type Vehicle.
+     * @param selectedCar A string representing the vehicle we want to create.
+     * @return the created vehicle.
+     * @throws Exception 
+     */
+    public static Vehicle createVehicle(final Object selectedCar) throws Exception {
+        
+        if (selectedCar.toString().equalsIgnoreCase(NEON)) {
+            return new Neon();
+        } else if (selectedCar.toString().equalsIgnoreCase(CAVALIER)) {
+            return new Cavalier();
+        } else if (selectedCar.toString().equalsIgnoreCase(PRIUS)) {
+            return new Prius();
+        } else {
+            // record that this case should not happen.
+            throw new Exception ("Unrecognized Car");
+        }
+        // return myVehicle;
     }
     
     /**
