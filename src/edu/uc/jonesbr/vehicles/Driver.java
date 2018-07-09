@@ -114,6 +114,7 @@ public class Driver {
         
         for (Vehicle thisVehicle : allVehicles) {
             for (int i = 0; i < tripCounter; i++) {
+                printTripNumber(i);
                 // print the current state of the vehicle.
                 System.out.println("Before: " + thisVehicle);
 
@@ -201,5 +202,9 @@ public class Driver {
             
         // return the validated number.
         return intInput;
+    }
+    
+    private static void printTripNumber(int i) {
+        System.out.println("Trip Number: " + i);
     }
 }
