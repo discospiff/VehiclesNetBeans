@@ -14,7 +14,7 @@ public class Vehicle {
 
     private double gallonsOfGas;
     private int milesPerGallon;
-    private int odometer;
+    protected int odometer;
     private static double licensePlateFee;
 
     public void go(int distance) {
