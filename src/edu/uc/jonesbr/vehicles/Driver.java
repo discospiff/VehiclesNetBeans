@@ -56,6 +56,31 @@ public class Driver {
             final Object selectedCar = JOptionPane.showInputDialog(null, "Choose a Car to Create", "Choose a Car", JOptionPane.QUESTION_MESSAGE, null, availableCars, NEON);
              
             myVehicle = createVehicle(selectedCar);
+            
+            // ask Cavalier-specific questions
+            if (myVehicle instanceof Cavalier) {
+                // set it to a convertible.
+                final int convertible = JOptionPane.showConfirmDialog(null, "Is this a convertible?", "Convertible?", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                if (convertible == JOptionPane.YES_OPTION) {
+                    ((Cavalier) myVehicle).setConvertible(true);
+                } else {
+                    ((Cavalier) myVehicle).setConvertible(false);
+                }
+            }
+                     
+            // ask Prius-specific questions
+            if (myVehicle instanceof Prius) {
+                Prius prius = (Prius) myVehicle;
+                final String strMAH = JOptionPane.showInputDialog("Enter Milliamp Hours");
+                int intMAH = Integer.parseInt(strMAH);
+                prius.setMilliampHours(intMAH);
+                
+                final String strMPMAH = JOptionPane.showInputDialog("Enter Miles per MAH");
+                int intMPMAH = Integer.parseInt(strMPMAH);
+                prius.setMilesPerMah(intMPMAH);
+                
+                
+            }
 
             // prompt user
             String strGallonsOfGas = JOptionPane.showInputDialog("Enter gallons of gas");
