@@ -27,4 +27,11 @@ public class Cavalier extends Vehicle {
         this.convertible = convertible;
     }
     
+    @Override
+    public String toString() {
+        String state = super.toString(); 
+        String cavalierState = "Cavalier Convertible " + convertible + " ";
+        return cavalierState + state;
+    }
+    
 }

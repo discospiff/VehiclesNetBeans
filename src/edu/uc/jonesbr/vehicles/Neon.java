@@ -11,4 +11,11 @@ package edu.uc.jonesbr.vehicles;
  */
 public class Neon extends Vehicle {
     
+    @Override
+    public String toString() {
+        String state = super.toString(); 
+        
+        return "Neon " + state; 
+                
+    }
 }

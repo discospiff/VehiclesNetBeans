@@ -115,7 +115,7 @@ public class Driver {
         for (Vehicle thisVehicle : allVehicles) {
             for (int i = 0; i < tripCounter; i++) {
                 // print the current state of the vehicle.
-                System.out.println("Before: " + thisVehicle.toString());
+                System.out.println("Before: " + thisVehicle);
 
                 if (thisVehicle.getGallonsOfGas() <= 0) {
                     System.out.println("Out of gas!");
