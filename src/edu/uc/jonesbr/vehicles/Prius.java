@@ -9,11 +9,13 @@ package edu.uc.jonesbr.vehicles;
  *
  * @author ucint
  */
-public class Prius extends Vehicle {
+public class Prius extends Vehicle implements LowEmissionVehicle {
     private int batteryLevel;
     private int milesPerMah;
     private int rechargeFactor = 20; // amount in which the battery increases, per mile driven under interal combustion.
     private int batteryThreshhold = 10;
+    private int taxRebate = 0;
+    private boolean taxRebateApplied = false;
 
     @Override
     public void go(int distance) {
@@ -71,8 +73,14 @@ public class Prius extends Vehicle {
     @Override
     public String toString() {
         String state = super.toString(); //To change body of generated methods, choose Tools | Templates.
-            String priusState = "Prius milliamp hours: " +  batteryLevel + " miles per MAH : " + milesPerMah + " ";
+            String priusState = "Prius milliamp hours: " +  batteryLevel + " miles per MAH : " + milesPerMah + " Tax Rebate: " + taxRebate + " ";
         return priusState + state; 
+    }
+
+    @Override
+    public void applyTaxRebate(int amount) {
+        taxRebate = amount;
+        taxRebateApplied = true;
     }
     
 }

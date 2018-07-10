@@ -9,7 +9,7 @@ package edu.uc.jonesbr.vehicles;
  *
  * @author ucint
  */
-public class Vehicle {
+public class Vehicle implements Mobility {
 
 
     private double gallonsOfGas;
@@ -17,6 +17,7 @@ public class Vehicle {
     protected int odometer;
     private static double licensePlateFee;
 
+    @Override
     public void go(int distance) {
         // compute gallons consumed
         double gallonsConsumed = distance/milesPerGallon;
@@ -35,6 +36,7 @@ public class Vehicle {
     /**
      * @return the gallonsOfGas
      */
+    @Override
     public double getGallonsOfGas() {
         return gallonsOfGas;
     }
@@ -42,6 +44,7 @@ public class Vehicle {
     /**
      * @param gallonsOfGas the gallonsOfGas to set
      */
+    @Override
     public void setGallonsOfGas(double gallonsOfGas) {
         this.gallonsOfGas = gallonsOfGas;
     }
@@ -49,6 +52,7 @@ public class Vehicle {
     /**
      * @return the milesPerGallon
      */
+    @Override
     public int getMilesPerGallon() {
         return milesPerGallon;
     }
@@ -56,6 +60,7 @@ public class Vehicle {
     /**
      * @param milesPerGallon the milesPerGallon to set
      */
+    @Override
     public void setMilesPerGallon(int milesPerGallon) {
         this.milesPerGallon = milesPerGallon;
     }
@@ -63,6 +68,7 @@ public class Vehicle {
     /**
      * @return the odometer
      */
+    @Override
     public int getOdometer() {
         return odometer;
     }
@@ -70,6 +76,7 @@ public class Vehicle {
     /**
      * @param odometer the odometer to set
      */
+    @Override
     public void setOdometer(int odometer) {
         this.odometer = odometer;
     }

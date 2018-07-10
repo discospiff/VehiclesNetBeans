@@ -45,12 +45,12 @@ public class Driver {
         Vehicle.setLicensePlateFee(15.0); 
       
         // this array list will contain all of the vehicles that we create.
-        ArrayList<Vehicle> allVehicles = new ArrayList<>();
+        ArrayList<Mobility> allVehicles = new ArrayList<Mobility>();
             
         do {
            // create an object of type Vehicle, and store it in the variable myVehicle
     
-            Vehicle myVehicle;
+            Mobility myVehicle;
             String[] availableCars = {NEON, CAVALIER, PRIUS};
 
             final Object selectedCar = JOptionPane.showInputDialog(null, "Choose a Car to Create", "Choose a Car", JOptionPane.QUESTION_MESSAGE, null, availableCars, NEON);
@@ -112,7 +112,7 @@ public class Driver {
         promptForTrips();
 
         
-        for (Vehicle thisVehicle : allVehicles) {
+        for (Mobility thisVehicle : allVehicles) {
             for (int i = 0; i < tripCounter; i++) {
                 printTripNumber(i);
                 // print the current state of the vehicle.
@@ -142,10 +142,20 @@ public class Driver {
      * @return the created vehicle.
      * @throws Exception 
      */
-    public static Vehicle createVehicle(final Object selectedCar) throws Exception {
-        String fullyQualifiedClassName = "edu.uc.jonesbr.vehicles." + selectedCar.toString();
-        Vehicle myVehicle =  (Vehicle) Class.forName(fullyQualifiedClassName).newInstance();
-        return myVehicle;
+    public static Mobility createVehicle(final Object selectedCar) throws Exception {
+        if (selectedCar.toString().equalsIgnoreCase(NEON)) {
+            return new Neon();
+        } else if (selectedCar.toString().equalsIgnoreCase(CAVALIER)) {
+            Cavalier cavalier =  new Cavalier();
+            return cavalier;
+        } else if (selectedCar.toString().equalsIgnoreCase(PRIUS)) {
+            Prius prius = new Prius();
+            TaxAgent.applyForTaxCredit(prius);
+            return prius;
+        } else {
+            // record that this case should not happen.
+            throw new Exception ("Unrecognized Car");
+        }
     }
     
     /**
